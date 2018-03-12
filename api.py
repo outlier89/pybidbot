@@ -1,13 +1,19 @@
-#!flask/bin/python
-from flask import Flask, jsonify
+import cherrypy
+import json
 
-app = Flask(__name__)
+class Root(object):
+    
+    @cherrypy.expose
+    def bids(self):
+        %store -r
+        return json.dumps({"current_round": curr_round,"last_round": last_round})
 
-@app.route('/',methods=['GET'])
-def index():
-    %store -r curr_round
-    %store -r last_round
-    return jsonify ({"current_round": curr_round,"last_round":last_round})
-
-if __name__ == "__main__":
-    app.run(host='0.0.0.0',ssl_context=('cert.crt', 'pvt.key')) # Replace with cert.crt & pvt.key with your SSL certs & private key or remove this to disable https
+if __name__ == '__main__':
+    cherrypy.config.update({
+        'environment': 'production',
+        'server.socket_host': '127.0.0.1',
+        'server.socket_port': 6060,
+        'tools.proxy.on': True,
+    })
+    cherrypy.tree.mount(Root(), '/')
+    cherrypy.engine.start()
