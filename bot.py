@@ -12,9 +12,7 @@ from datetime import timedelta
 
 nodes = ['https://api.steemit.com',
          'https://rpc.buildteam.io',
-         'https://steemd.minnowsupportproject.org',
-         'https://steemd.privex.io',
-         'https://gtg.steem.house:8090']
+         'https://steemd.minnowsupportproject.org']
 
 acc_name = 'therising'                                #Replace therising with your steem account name.
 s = Steem(nodes, keys=['Your_Private_Posting_Key', 'Your_Private_Active_Key'])
