@@ -1,6 +1,6 @@
 # TheRising - Steem Bid Bot in Python
 
-Steps to follow to start your own bot:
+Steps to start your own bot:
 1) Install Anaconda Python 3.6 Version.
 2) Install steem package in python with this command: pip install steem. 
 3) Just replace the acc_name in bot.py file to your steemit accout name without the @
